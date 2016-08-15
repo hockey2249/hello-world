@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="bower_components/angular/angular.js"></script>
+    <link rel="stylesheet" href="https://cdn.rawgit.com/esvit/ng-table/1.0.0/dist/ng-table.min.css">
+    <script src="https://cdn.rawgit.com/esvit/ng-table/1.0.0/dist/ng-table.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+	<link rel="stylesheet" type="text/css" href="bower_components/bootstrap-css-only/css/bootstrap.css">
+</head>
+<body ng-app="ngFun">
+	
+	{{ 'hola!'.toUpperCase() }}
+
+	<div ng-controller="PokemonController">
+    	<h1> Trainers name: {{ trainer.name }}</h1>
+    	<span>Enter your name:</span>
+    	<input ng-model="trainer.name"/>
+
+    	<pre> {{ pokemon | json }}</pre>
+    	<pre> {{ pokemon[0].name }}</pre>
+    	<a href="#"> {{ catchphrase | uppercase }}</a>
+
+
+    	<table class= " table table-striped">
+    		<tr>
+    			<th> Ndex: </th> 
+    			<th> Name: </th> 
+    			<th> Type: </th>
+
+    		</tr>
+    		<tr ng-repeat= "pokes in pokemon" >
+    			<td ng-click="Ndex = Ndex + 2" ng-init="Ndex = pokes.Ndex"> {{Ndex}}</td>
+    			<td> {{ pokes.name}}</td>
+    			<td> {{ pokes.type}}</td>
+
+    		</tr>	
+    			
+    	</table>
+
+        <table ng-table="tableParams" class="table" show-filter="true">
+            <tr ng-repeat= "pokes in pokemon">
+                <td title="'Name'" filter="{ name: 'text'}" sortable="'pokes.name'">
+                    {{pokes.name}}</td>
+                <td title="'Type'" filter="{ type: 'text'}" sortable="'type'">
+                    {{pokes.type}}</td>
+            </tr>
+        </table>
+    	
+
+    	</ul>
+
+	</div>
+
+    <div ng-app="ngCustomDirectives">
+        
+    </div>
+
+</body>
+</html>
